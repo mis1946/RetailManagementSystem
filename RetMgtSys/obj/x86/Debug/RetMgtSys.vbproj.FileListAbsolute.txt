@@ -371,7 +371,8 @@ C:\GGC_Systems\vb.net\RetMgtSys\RetailManagementSystem.exe
 C:\GGC_Systems\vb.net\RetMgtSys\RetailManagementSystem.pdb
 C:\GGC_Systems\vb.net\RetMgtSys\RetailManagementSystem.xml
 C:\Users\Maynard\Documents\GitHub\RetailManagementSystem\RetMgtSys\obj\x86\Debug\RetMgtSys.vbproj.AssemblyReference.cache
-C:\Users\Maynard\Documents\GitHub\RetailManagementSystem\RetMgtSys\obj\x86\Debug\RetailManagementSystem.Form1.resources
+C:\Users\Maynard\Documents\GitHub\RetailManagementSystem\RetMgtSys\obj\x86\Debug\RetMgtSys.vbproj.ResolveComReference.cache
+C:\Users\Maynard\Documents\GitHub\RetailManagementSystem\RetMgtSys\obj\x86\Debug\RetailManagementSystem.frmUtilProductUpload.resources
 C:\Users\Maynard\Documents\GitHub\RetailManagementSystem\RetMgtSys\obj\x86\Debug\RetailManagementSystem.frmDeliveryService.resources
 C:\Users\Maynard\Documents\GitHub\RetailManagementSystem\RetMgtSys\obj\x86\Debug\RetailManagementSystem.frmInventory1.resources
 C:\Users\Maynard\Documents\GitHub\RetailManagementSystem\RetMgtSys\obj\x86\Debug\RetailManagementSystem.frmDiscount.resources
