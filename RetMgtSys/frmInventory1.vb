@@ -63,7 +63,7 @@ Public Class frmInventory1
 
         If Mid(loTxt.Name, 1, 8) = "txtField" Then
             Select Case loIndex
-                Case 1, 2, 3, 17, 8 To 14, 80 To 85
+                Case 1, 2, 3, 17, 33, 8 To 14, 80 To 87
                     p_oRecord.Master(loIndex) = loTxt.Text
             End Select
         End If
@@ -90,6 +90,9 @@ Public Class frmInventory1
         If Mid(loTxt.Name, 1, 8) = "txtField" Then
             Select Case loIndex
                 Case 17
+                    loTxt.Text = Format(p_oRecord.Master(loIndex), "yyyy/MM/dd")
+                Case 33
+                    Debug.Print(p_oRecord.Master(loIndex))
                     loTxt.Text = Format(p_oRecord.Master(loIndex), "yyyy/MM/dd")
             End Select
         End If
@@ -128,6 +131,8 @@ Public Class frmInventory1
         If Mid(loTxt.Name, 1, 8) = "txtField" Then
             Select Case loIndex
                 Case 17
+                    loTxt.Text = Format(p_oRecord.Master(loIndex), "MMM dd, yyyy")
+                Case 33
                     loTxt.Text = Format(p_oRecord.Master(loIndex), "MMM dd, yyyy")
             End Select
         End If
@@ -179,7 +184,10 @@ Public Class frmInventory1
                 Case 5 'cancel
                     If p_oRecord.CancelUpdate() Then clearFields()
                 Case 6 'update
-                    p_oRecord.UpdateRecord()
+                    If Trim(txtField01.Text) <> "" Then
+
+                        p_oRecord.UpdateRecord()
+                    End If
                 Case 7 'delete
                     If MsgBox("Do you want to disable this item?", MsgBoxStyle.Question & MsgBoxStyle.YesNo, "Confirm") = MsgBoxResult.Yes Then
                         If p_oRecord.CancelRecord Then
@@ -214,13 +222,15 @@ endProc:
         Panel2.Enabled = lbShow
         Panel4.Enabled = lbShow
         Panel6.Enabled = lbShow
+        Panel7.Enabled = lbShow
 
         cmdButton01.Visible = Not lbShow
         cmdButton06.Visible = Not lbShow
         cmdButton07.Visible = Not lbShow
         cmdButton08.Visible = Not lbShow
         Panel3.Enabled = Not lbShow
-
+        Panel2.Enabled = p_oRecord.EditMode = xeEditMode.MODE_ADDNEW
+        CheckBox3.Enabled = p_oRecord.EditMode = xeEditMode.MODE_ADDNEW
         If lbShow Then
             txtField02.Focus()
         Else
@@ -239,9 +249,10 @@ endProc:
             txtField80.Text = .Master(80)
             txtField81.Text = .Master(81)
             txtField82.Text = .Master(82)
-            txtField85.Text = .Master(85)
             txtField08.Text = Format(.Master(8), "#,##0.00")
             txtField09.Text = Format(.Master(9), "#,##0.00")
+            txtField86.Text = Format(.Master(86), "#,##0.00")
+            txtField87.Text = Format(.Master(87), "#,##0.00")
             txtField10.Text = Format(IFNull(.Master(10), 0), "#,##0.00")
             txtField11.Text = Format(IFNull(.Master(11), 0), "#,##0.00")
             txtField12.Text = Format(IFNull(.Master(12), 0), "#,##0.00")
@@ -259,9 +270,14 @@ endProc:
             txtField23.Text = IFNull(.Master(23))
             txtField24.Text = IFNull(.Master(24))
 
+
             CheckBox2.Checked = IIf(.Master("cWthPromo") = "1", True, False)
             CheckBox1.Checked = IIf(.Master("cComboMlx") = "1", True, False)
             CheckBox3.Checked = IIf(.Master("cRecdStat") = "1", True, False)
+            CheckBox4.Checked = IIf(.Master(88) = "1", True, False)
+
+
+            txtField33.Text = Format(IFNull(.Master(33), p_oAppDriver.getSysDate), "MMM dd, yyyy")
 
             If IFNull(.Master("sImgePath"), "") <> "" Then
                 For nCtr As Integer = 0 To fileList.Items.Count - 1
@@ -285,9 +301,10 @@ endProc:
         txtField80.Text = ""
         txtField81.Text = ""
         txtField82.Text = ""
-        txtField85.Text = ""
         txtField08.Text = Format(0.0#, "#,##0.00")
         txtField09.Text = Format(0.0#, "#,##0.00")
+        txtField86.Text = Format(0.0#, "#,##0.00")
+        txtField87.Text = Format(0.0#, "#,##0.00")
         txtField10.Text = Format(0.0#, "#,##0.00")
         txtField11.Text = Format(0.0#, "#,##0.00")
         txtField12.Text = Format(0.0#, "#,##0.00")
@@ -298,6 +315,7 @@ endProc:
         txtField85.Text = ""
         txtField18.Text = "0"
         txtField17.Text = Format(p_oAppDriver.SysDate, "MMM dd, yyyy")
+        txtField33.Text = Format(p_oAppDriver.SysDate, "MMM dd, yyyy")
         txtField19.Text = "0"
         txtField20.Text = "0"
         txtField21.Text = "0"
@@ -308,6 +326,7 @@ endProc:
         CheckBox1.Checked = False
         CheckBox2.Checked = False
         CheckBox3.Checked = True
+        CheckBox4.Checked = True
 
         Try
             Dim ScanFolder() As String
@@ -337,9 +356,10 @@ endProc:
         loTxt = CType(FindTextBox(Me, "txtField" & Format(Index, "00")), TextBox)
 
         Select Case Index
-            Case 18
+            Case 18, 33
+                Debug.Print(Value)
                 loTxt.Text = Format(Value, "MMM dd, yyyy")
-            Case 8 To 13
+            Case 8 To 13, 86, 87
                 loTxt.Text = Format(Value, "#,##0.00")
             Case 80 To 85
                 loTxt.Text = Value
@@ -409,9 +429,11 @@ endProc:
             End If
         End If
     End Sub
-
+    Private Sub CheckBox4_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBox4.Click
+        p_oRecord.Master("cRecdStat") = IIf(CheckBox4.Checked, "1", "0")
+    End Sub
     Private Sub CheckBox3_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBox3.Click
-        p_oRecord.Master("cRecdStat") = IIf(CheckBox3.Checked, "1", "3")
+        p_oRecord.Master("cRecdStat") = IIf(CheckBox3.Checked, "1", "0")
     End Sub
 
     Private Sub CheckBox2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBox2.Click
@@ -430,4 +452,5 @@ endProc:
             ex.ToString()
         End Try
     End Sub
+
 End Class

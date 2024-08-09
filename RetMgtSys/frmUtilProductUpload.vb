@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports ADODB
 Imports ggcRetailParams
 Imports Microsoft.Office.Interop.Excel
 
@@ -67,67 +68,162 @@ Public Class frmUtilProductUpload
         Dim lnStockID As String = ""
         Dim lbNewRecord As Boolean = True
         Dim lnStockExist() As String = {}
-        Dim pnSuccess As Integer
+        Dim pnNewSuccess As Integer
+        Dim pnUpdSuccess As Integer
 
         Dim rows As Integer = range.Rows.Count
         Dim cols As Integer = range.Columns.Count
-        pnSuccess = 0
-        For i As Integer = pnRow To rows
+        pnNewSuccess = 0
+        pnUpdSuccess = 0
+        Dim lnOldUnitPrice As Decimal = 0.0
+        Dim lnOldSellPrice As Decimal = 0.0
+        Dim serialDate As Double = 0
 
+
+
+        serialDate = If(range.Cells(4, 2).Value2 IsNot Nothing, range.Cells(4, 2).Value2.ToString(), "").Trim()
+        Dim dDateEffect As Date = DateTime.FromOADate(serialDate)
+
+        If Not dDateEffect.ToString <> "" Then
+
+            MsgBox(" Please verify your excel File no Date Effectivity Found.", MsgBoxStyle.Information, "Information  (R4 / C2)")
+            workbook.Close(False)
+            excelApp.Quit()
+
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(range)
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(worksheet)
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook)
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(workbooks)
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)
+
+            range = Nothing
+            worksheet = Nothing
+            workbook = Nothing
+            workbooks = Nothing
+            excelApp = Nothing
+
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+        End If
+
+        For i As Integer = pnRow To rows
+            lnStockID = ""
+            lnRecord = ""
             Dim lnRow As Integer = 1
             For j As Integer = pnCol To cols
                 Select Case lnRow
                     Case 1
                         lnStockID = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
-                        If Not p_oRecord.OpenRecord(lnStockID) Then
-                            p_oRecord.NewRecord()
-                            lbNewRecord = True
-                        Else
-                            Dim lnCtr As Integer = lnStockExist.Length
-                            ReDim Preserve lnStockExist(lnCtr)
-                            lnStockExist(lnCtr) = lnStockID
+                        If lnStockID <> "" Then
 
-                            lbNewRecord = False
+                            If Not p_oRecord.OpenRecord(lnStockID) Then
+                                p_oRecord.NewRecord()
+                                p_oRecord.Master(0) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+                                p_oRecord.Master(1) = p_oRecord.Master(0)
+
+                                p_oRecord.Master(33) = CDate(dDateEffect)
+                                lbNewRecord = True
+                            Else
+                                If (p_oRecord.UpdateRecord()) Then
+                                    p_oRecord.Master(33) = CDate(dDateEffect)
+                                Else
+                                    Exit For
+                                End If
+
+                                lbNewRecord = False
+                            End If
+                        Else
                             Exit For
+
                         End If
 
-                    Case 2
-                        p_oRecord.Master(2) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
-                        p_oRecord.Master(3) = p_oRecord.Master(2)
-                    Case 3
-                        p_oRecord.Master(80) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
-                    Case 4
-                        p_oRecord.Master(85) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
-                    Case 5
-                        p_oRecord.Master(8) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
-                    Case 6
-                        p_oRecord.Master(9) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+                    Case 2 'Description,sBriefDescription
+                        If lbNewRecord Then
+                            p_oRecord.Master(2) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+                            p_oRecord.Master(3) = p_oRecord.Master(2)
+                        End If
+
+                    Case 3 ' Category
+                        If lbNewRecord Then
+                            p_oRecord.Master(80) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+                        End If
+
+                    Case 4 'Inventory Type
+                        If lbNewRecord Then
+                            p_oRecord.Master(85) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+                        End If
+                    Case 5 'Old Price
+                        If lbNewRecord Then
+                            If range.Cells(i, j).Value2 IsNot Nothing Then
+                                Decimal.TryParse(range.Cells(i, j).Value2.ToString(), lnOldUnitPrice)
+                                p_oRecord.Master(8) = lnOldUnitPrice
+                            Else
+                                lnOldUnitPrice = 0
+                            End If
+                        End If
+
+                    Case 6 'Old SellPrice
+                        If lbNewRecord Then
+                            If range.Cells(i, j).Value2 IsNot Nothing Then
+                                Decimal.TryParse(range.Cells(i, j).Value2.ToString(), lnOldSellPrice)
+                                p_oRecord.Master(9) = lnOldSellPrice
+                            Else
+                                lnOldSellPrice = 0
+                            End If
+                        End If
+                    Case 7  'UnitPrice
+                        p_oRecord.Master(86) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), lnOldUnitPrice)
+                    Case 8  'SellPrice
+                        p_oRecord.Master(87) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), lnOldSellPrice)
+                    Case 9 'Record Stat
+                        lnRecord = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+
+                        If lnRecord <> "" Then
+                            If lnRecord.ToUpper() = "ACTIVE" Then
+                                p_oRecord.Master(88) = "1"
+                            ElseIf lnRecord.ToUpper() = "INACTIVE" Then
+                                p_oRecord.Master(88) = "0"
+                            End If
+                        Else
+                            p_oRecord.Master(88) = "1"
+                        End If
+
                 End Select
                 lnRow = lnRow + 1
 
             Next
+            If lnStockID <> "" Then
+                If lbNewRecord Then
 
-            If lbNewRecord Then
-                p_oRecord.SaveRecord()
-                pnSuccess = pnSuccess + 1
+                    If (p_oRecord.SaveRecord()) Then
+
+                        pnNewSuccess = pnNewSuccess + 1
+                    End If
+                Else
+                    If (p_oRecord.SaveRecord()) Then
+
+                        pnUpdSuccess = pnUpdSuccess + 1
+
+                    End If
+                End If
             End If
         Next
         Dim lnMsgStock As String = ""
-        For lnstockCtr As Integer = 0 To lnStockExist.Length - 1
-            lnMsgStock = lnMsgStock + lnStockExist(lnstockCtr) + ", "
-        Next
+        'For lnstockCtr As Integer = 0 To lnStockExist.Length - 1
+        '    lnMsgStock = lnMsgStock + lnStockExist(lnstockCtr) + ", "
+        'Next
 
-        If lnStockExist.Length > 0 Then
-            If pnSuccess > 0 Then
-                MsgBox(" Record Uploaded Successfuly. " & vbCrLf & " Duplicate Record Found! " & vbCrLf _
-                    & lnMsgStock, MsgBoxStyle.Information, "Success w/ Duplicate")
-            Else
-                MsgBox(" Record Already exist! " & vbCrLf _
-                    & lnMsgStock, MsgBoxStyle.Information, "Unable to Save Record")
-            End If
-        Else
-            MsgBox(" Record Uploaded Successfuly.", MsgBoxStyle.Information, "Success")
-        End If
+        'If lnStockExist.Length > 0 Then
+        '    If pnSuccess > 0 Then
+        '        MsgBox(" Record Uploaded Successfuly. " & vbCrLf & " Duplicate Record Found! " & vbCrLf _
+        '            & lnMsgStock, MsgBoxStyle.Information, "Success w/ Duplicate")
+        '    Else
+        '        MsgBox(" Record Already exist! " & vbCrLf _
+        '            & lnMsgStock, MsgBoxStyle.Information, "Unable to Save Record")
+        '    End If
+        'Else
+        MsgBox(" Record Uploaded Successfuly.", MsgBoxStyle.Information, "Success")
+        'End If
         workbook.Close(False)
         excelApp.Quit()
 
@@ -161,8 +257,8 @@ Public Class frmUtilProductUpload
 
                 filePath = BrowseFile()
                 txtField00.Text = filePath
-                txtField01.Text = "5"
-                pnRow = 5
+                txtField01.Text = "7"
+                pnRow = 7
                 txtField02.Text = "1"
                 pnCol = 1
 
