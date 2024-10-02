@@ -138,39 +138,41 @@ Public Class frmUtilProductUpload
                         End If
 
                     Case 2 'Description,sBriefDescription
-                        If lbNewRecord Then
-                            p_oRecord.Master(2) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+                        'If lbNewRecord Then
+                        p_oRecord.Master(2) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
                             p_oRecord.Master(3) = p_oRecord.Master(2)
-                        End If
+                        'End If
 
                     Case 3 ' Category
-                        If lbNewRecord Then
-                            p_oRecord.Master(80) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+                        'If lbNewRecord Then
+                        If (range.Cells(i, j).Value2 IsNot Nothing) Then
+                            p_oRecord.Master(80) = range.Cells(i, j).Value2.ToString()
                         End If
 
+                        'End If
                     Case 4 'Inventory Type
-                        If lbNewRecord Then
-                            p_oRecord.Master(85) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), "")
+                        If (range.Cells(i, j).Value2 IsNot Nothing) Then
+                            p_oRecord.Master(85) = range.Cells(i, j).Value2.ToString()
                         End If
                     Case 5 'Old Price
-                        If lbNewRecord Then
-                            If range.Cells(i, j).Value2 IsNot Nothing Then
+                        'If lbNewRecord Then
+                        If range.Cells(i, j).Value2 IsNot Nothing Then
                                 Decimal.TryParse(range.Cells(i, j).Value2.ToString(), lnOldUnitPrice)
                                 p_oRecord.Master(8) = lnOldUnitPrice
                             Else
                                 lnOldUnitPrice = 0
                             End If
-                        End If
+                        'End If
 
                     Case 6 'Old SellPrice
-                        If lbNewRecord Then
-                            If range.Cells(i, j).Value2 IsNot Nothing Then
+                        'If lbNewRecord Then
+                        If range.Cells(i, j).Value2 IsNot Nothing Then
                                 Decimal.TryParse(range.Cells(i, j).Value2.ToString(), lnOldSellPrice)
                                 p_oRecord.Master(9) = lnOldSellPrice
                             Else
                                 lnOldSellPrice = 0
                             End If
-                        End If
+                        'End If
                     Case 7  'UnitPrice
                         p_oRecord.Master(86) = If(range.Cells(i, j).Value2 IsNot Nothing, range.Cells(i, j).Value2.ToString(), lnOldUnitPrice)
                     Case 8  'SellPrice
@@ -184,8 +186,6 @@ Public Class frmUtilProductUpload
                             ElseIf lnRecord.ToUpper() = "INACTIVE" Then
                                 p_oRecord.Master(88) = "0"
                             End If
-                        Else
-                            p_oRecord.Master(88) = "1"
                         End If
 
                 End Select

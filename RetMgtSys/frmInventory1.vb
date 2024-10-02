@@ -251,8 +251,6 @@ endProc:
             txtField82.Text = .Master(82)
             txtField08.Text = Format(.Master(8), "#,##0.00")
             txtField09.Text = Format(.Master(9), "#,##0.00")
-            txtField86.Text = Format(.Master(86), "#,##0.00")
-            txtField87.Text = Format(.Master(87), "#,##0.00")
             txtField10.Text = Format(IFNull(.Master(10), 0), "#,##0.00")
             txtField11.Text = Format(IFNull(.Master(11), 0), "#,##0.00")
             txtField12.Text = Format(IFNull(.Master(12), 0), "#,##0.00")
@@ -262,6 +260,9 @@ endProc:
             txtField84.Text = .Master(84)
             txtField85.Text = .Master(85)
             txtField18.Text = IFNull(.Master(18))
+
+            txtField86.Text = Format(.Master(86), "#,##0.00")
+            txtField87.Text = Format(.Master(87), "#,##0.00")
             txtField17.Text = Format(IFNull(.Master(17), p_oAppDriver.getSysDate), "MMM dd, yyyy")
             txtField19.Text = IFNull(.Master(19))
             txtField20.Text = IFNull(.Master(20))
