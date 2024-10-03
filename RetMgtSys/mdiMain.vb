@@ -526,4 +526,5 @@ errProc:
             .Refresh()
         End With
     End Sub
+
 End Class

@@ -70,12 +70,12 @@ Partial Class mdiMain
         Me.UtilitiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackupDatabaseToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RestoreDatabseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductUploadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tslDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tslUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.sfd = New System.Windows.Forms.SaveFileDialog()
         Me.ofd = New System.Windows.Forms.OpenFileDialog()
-        Me.ProductUploadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -239,7 +239,7 @@ Partial Class mdiMain
         '
         Me.BillingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BillingOfStatementToolStripMenuItem, Me.StateOfAccountToolStripMenuItem})
         Me.BillingToolStripMenuItem.Name = "BillingToolStripMenuItem"
-        Me.BillingToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BillingToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.BillingToolStripMenuItem.Text = "Billing"
         '
         'BillingOfStatementToolStripMenuItem
@@ -379,6 +379,12 @@ Partial Class mdiMain
         Me.RestoreDatabseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.RestoreDatabseToolStripMenuItem.Text = "Restore Databse"
         '
+        'ProductUploadToolStripMenuItem
+        '
+        Me.ProductUploadToolStripMenuItem.Name = "ProductUploadToolStripMenuItem"
+        Me.ProductUploadToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProductUploadToolStripMenuItem.Text = "Product Upload"
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
@@ -407,12 +413,6 @@ Partial Class mdiMain
         'ofd
         '
         Me.ofd.FileName = "OpenFileDialog1"
-        '
-        'ProductUploadToolStripMenuItem
-        '
-        Me.ProductUploadToolStripMenuItem.Name = "ProductUploadToolStripMenuItem"
-        Me.ProductUploadToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ProductUploadToolStripMenuItem.Text = "Product Upload"
         '
         'mdiMain
         '
