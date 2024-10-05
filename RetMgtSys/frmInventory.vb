@@ -63,7 +63,7 @@ Public Class frmInventory
 
         If Mid(loTxt.Name, 1, 8) = "txtField" Then
             Select Case loIndex
-                Case 1, 2, 3, 17, 8 To 14, 80 To 85
+                Case 1, 2, 3, 17, 33, 8 To 14, 80 To 87
                     p_oRecord.Master(loIndex) = loTxt.Text
             End Select
         End If
@@ -90,6 +90,8 @@ Public Class frmInventory
         If Mid(loTxt.Name, 1, 8) = "txtField" Then
             Select Case loIndex
                 Case 17
+                    loTxt.Text = Format(p_oRecord.Master(loIndex), "yyyy/MM/dd")
+                Case 33
                     loTxt.Text = Format(p_oRecord.Master(loIndex), "yyyy/MM/dd")
             End Select
         End If
@@ -128,6 +130,8 @@ Public Class frmInventory
         If Mid(loTxt.Name, 1, 8) = "txtField" Then
             Select Case loIndex
                 Case 17
+                    loTxt.Text = Format(p_oRecord.Master(loIndex), "MMM dd, yyyy")
+                Case 33
                     loTxt.Text = Format(p_oRecord.Master(loIndex), "MMM dd, yyyy")
             End Select
         End If
@@ -242,6 +246,8 @@ endProc:
             txtField85.Text = .Master(85)
             txtField08.Text = Format(.Master(8), "#,##0.00")
             txtField09.Text = Format(.Master(9), "#,##0.00")
+            txtField86.Text = Format(.Master(86), "#,##0.00")
+            txtField87.Text = Format(.Master(87), "#,##0.00")
             txtField10.Text = Format(IFNull(.Master(10), 0), "#,##0.00")
             txtField11.Text = Format(IFNull(.Master(11), 0), "#,##0.00")
             txtField12.Text = Format(IFNull(.Master(12), 0), "#,##0.00")
@@ -252,6 +258,7 @@ endProc:
             txtField85.Text = .Master(85)
             txtField18.Text = IFNull(.Master(18))
             txtField17.Text = Format(IFNull(.Master(17), p_oAppDriver.getSysDate), "MMM dd, yyyy")
+            txtField33.Text = Format(IFNull(.Master(17), p_oAppDriver.getSysDate), "MMM dd, yyyy")
             txtField19.Text = IFNull(.Master(19))
             txtField20.Text = IFNull(.Master(20))
             txtField21.Text = IFNull(.Master(21))
@@ -292,12 +299,15 @@ endProc:
         txtField11.Text = Format(0.0#, "#,##0.00")
         txtField12.Text = Format(0.0#, "#,##0.00")
         txtField13.Text = Format(0.0#, "#,##0.00")
+        txtField86.Text = Format(0.0#, "#,##0.00")
+        txtField87.Text = Format(0.0#, "#,##0.00")
         txtField14.Text = ""
         txtField83.Text = ""
         txtField84.Text = ""
         txtField85.Text = ""
         txtField18.Text = "0"
         txtField17.Text = Format(p_oAppDriver.SysDate, "MMM dd, yyyy")
+        txtField33.Text = Format(p_oAppDriver.SysDate, "MMM dd, yyyy")
         txtField19.Text = "0"
         txtField20.Text = "0"
         txtField21.Text = "0"
@@ -411,7 +421,7 @@ endProc:
     End Sub
 
     Private Sub CheckBox3_Click(sender As Object, e As System.EventArgs) Handles CheckBox3.Click
-        p_oRecord.Master("cRecdStat") = IIf(CheckBox3.Checked, "1", "3")
+        p_oRecord.Master("cRecdStat") = IIf(CheckBox3.Checked, "1", "0")
     End Sub
 
     Private Sub CheckBox2_Click(sender As Object, e As System.EventArgs) Handles CheckBox2.Click
@@ -430,4 +440,5 @@ endProc:
             ex.ToString()
         End Try
     End Sub
+
 End Class

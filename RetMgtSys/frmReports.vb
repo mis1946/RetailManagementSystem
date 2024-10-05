@@ -68,6 +68,10 @@ Public Class frmReports
             '.Add(New Reports With {.Reports = "Sales Summary Report", .Number = "8"})
             .Add(New Reports With {.Reports = "Daily Sales Report", .Number = "11"})
             .Add(New Reports With {.Reports = "Sales Ranking Report", .Number = "12"})
+            '.Add(New Reports With {.Reports = "Statement of Account Detailed Report", .Number = "13"})
+            '.Add(New Reports With {.Reports = "Statement of Account Summarized Report", .Number = "14"})
+            .Add(New Reports With {.Reports = "Z-Reading Summary", .Number = "13"})
+
         End With
     End Sub
 
@@ -191,6 +195,23 @@ Public Class frmReports
             Case 12 ' Daily Sales Report ok'
                 Dim loRpt As ggcRMSReports.clsRankingReport
                 loRpt = New ggcRMSReports.clsRankingReport(p_oAppDriver)
+
+                Call loRpt.ReportTrans()
+            'Case 13 ' SOA Detailed ok'
+            '    Dim loRpt As ggcRMSReports.clsSOADetailed
+            '    loRpt = New ggcRMSReports.clsSOADetailed(p_oAppDriver)
+
+            '    Call loRpt.ReportTrans()
+
+            'Case 14 ' SOA Summarized ok'
+            '    Dim loRpt As ggcRMSReports.clsSOASummarized
+            '    loRpt = New ggcRMSReports.clsSOASummarized(p_oAppDriver)
+
+            '    Call loRpt.ReportTrans()
+
+            Case 13 ' Z Reading Summarized ok'
+                Dim loRpt As ggcRMSReports.clsZReadingSummary
+                loRpt = New ggcRMSReports.clsZReadingSummary(p_oAppDriver)
 
                 Call loRpt.ReportTrans()
         End Select

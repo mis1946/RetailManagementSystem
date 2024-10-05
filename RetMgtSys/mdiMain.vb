@@ -514,4 +514,17 @@ errProc:
             .Refresh()
         End With
     End Sub
+
+    Private Sub ProductUploadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductUploadToolStripMenuItem.Click
+        With frmUtilProductUpload
+
+            If isFormOpen(.Name) Then Exit Sub
+
+            .MdiParent = Me
+
+            .Show()
+            .Refresh()
+        End With
+    End Sub
+
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmInventory1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmInventory1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.txtSeeks02 = New System.Windows.Forms.TextBox()
@@ -51,6 +51,9 @@ Partial Class frmInventory1
         Me.txtField08 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.filePic = New System.Windows.Forms.PictureBox()
+        Me.fileList = New System.Windows.Forms.ListBox()
         Me.txtField22 = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.txtField23 = New System.Windows.Forms.TextBox()
@@ -91,16 +94,22 @@ Partial Class frmInventory1
         Me.cmdButton06 = New System.Windows.Forms.Button()
         Me.cmdButton07 = New System.Windows.Forms.Button()
         Me.cmdButton08 = New System.Windows.Forms.Button()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.filePic = New System.Windows.Forms.PictureBox()
-        Me.fileList = New System.Windows.Forms.ListBox()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
+        Me.txtField33 = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.txtField87 = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.txtField86 = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
-        Me.Panel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.filePic, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel5.SuspendLayout()
+        Me.Panel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel3
@@ -335,14 +344,14 @@ Partial Class frmInventory1
         Me.Panel2.Controls.Add(Me.Label9)
         Me.Panel2.Location = New System.Drawing.Point(12, 241)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(356, 79)
+        Me.Panel2.Size = New System.Drawing.Size(356, 63)
         Me.Panel2.TabIndex = 66
         '
         'txtField09
         '
         Me.txtField09.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtField09.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtField09.Location = New System.Drawing.Point(234, 34)
+        Me.txtField09.Location = New System.Drawing.Point(234, 27)
         Me.txtField09.Name = "txtField09"
         Me.txtField09.Size = New System.Drawing.Size(106, 31)
         Me.txtField09.TabIndex = 23
@@ -352,7 +361,7 @@ Partial Class frmInventory1
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(92, 36)
+        Me.Label24.Location = New System.Drawing.Point(96, 29)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(132, 25)
         Me.Label24.TabIndex = 22
@@ -361,7 +370,7 @@ Partial Class frmInventory1
         'txtField08
         '
         Me.txtField08.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtField08.Location = New System.Drawing.Point(234, 10)
+        Me.txtField08.Location = New System.Drawing.Point(234, 3)
         Me.txtField08.Name = "txtField08"
         Me.txtField08.Size = New System.Drawing.Size(106, 20)
         Me.txtField08.TabIndex = 21
@@ -370,7 +379,7 @@ Partial Class frmInventory1
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(171, 12)
+        Me.Label9.Location = New System.Drawing.Point(171, 5)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(53, 13)
         Me.Label9.TabIndex = 20
@@ -379,6 +388,7 @@ Partial Class frmInventory1
         'Panel4
         '
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel4.Controls.Add(Me.Panel6)
         Me.Panel4.Controls.Add(Me.txtField22)
         Me.Panel4.Controls.Add(Me.Label22)
         Me.Panel4.Controls.Add(Me.txtField23)
@@ -413,6 +423,34 @@ Partial Class frmInventory1
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(356, 360)
         Me.Panel4.TabIndex = 67
+        '
+        'Panel6
+        '
+        Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel6.Controls.Add(Me.filePic)
+        Me.Panel6.Controls.Add(Me.fileList)
+        Me.Panel6.Location = New System.Drawing.Point(-1, 250)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(357, 109)
+        Me.Panel6.TabIndex = 69
+        '
+        'filePic
+        '
+        Me.filePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.filePic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.filePic.Location = New System.Drawing.Point(266, 6)
+        Me.filePic.Name = "filePic"
+        Me.filePic.Size = New System.Drawing.Size(86, 94)
+        Me.filePic.TabIndex = 11
+        Me.filePic.TabStop = False
+        '
+        'fileList
+        '
+        Me.fileList.FormattingEnabled = True
+        Me.fileList.Location = New System.Drawing.Point(8, 5)
+        Me.fileList.Name = "fileList"
+        Me.fileList.Size = New System.Drawing.Size(256, 95)
+        Me.fileList.TabIndex = 10
         '
         'txtField22
         '
@@ -836,33 +874,88 @@ Partial Class frmInventory1
         Me.cmdButton08.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cmdButton08.UseVisualStyleBackColor = True
         '
-        'Panel6
+        'Panel7
         '
-        Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel6.Controls.Add(Me.filePic)
-        Me.Panel6.Controls.Add(Me.fileList)
-        Me.Panel6.Location = New System.Drawing.Point(12, 322)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(356, 93)
-        Me.Panel6.TabIndex = 69
+        Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel7.Controls.Add(Me.CheckBox4)
+        Me.Panel7.Controls.Add(Me.txtField33)
+        Me.Panel7.Controls.Add(Me.Label27)
+        Me.Panel7.Controls.Add(Me.txtField87)
+        Me.Panel7.Controls.Add(Me.Label25)
+        Me.Panel7.Controls.Add(Me.txtField86)
+        Me.Panel7.Controls.Add(Me.Label26)
+        Me.Panel7.Location = New System.Drawing.Point(12, 306)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(356, 110)
+        Me.Panel7.TabIndex = 71
         '
-        'filePic
+        'CheckBox4
         '
-        Me.filePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.filePic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.filePic.Location = New System.Drawing.Point(266, 6)
-        Me.filePic.Name = "filePic"
-        Me.filePic.Size = New System.Drawing.Size(80, 80)
-        Me.filePic.TabIndex = 11
-        Me.filePic.TabStop = False
+        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.Location = New System.Drawing.Point(236, 79)
+        Me.CheckBox4.Name = "CheckBox4"
+        Me.CheckBox4.Size = New System.Drawing.Size(104, 17)
+        Me.CheckBox4.TabIndex = 26
+        Me.CheckBox4.Text = "Active for Future"
+        Me.CheckBox4.UseVisualStyleBackColor = True
         '
-        'fileList
+        'txtField33
         '
-        Me.fileList.FormattingEnabled = True
-        Me.fileList.Location = New System.Drawing.Point(8, 5)
-        Me.fileList.Name = "fileList"
-        Me.fileList.Size = New System.Drawing.Size(256, 82)
-        Me.fileList.TabIndex = 10
+        Me.txtField33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtField33.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtField33.Location = New System.Drawing.Point(234, 51)
+        Me.txtField33.Name = "txtField33"
+        Me.txtField33.Size = New System.Drawing.Size(106, 26)
+        Me.txtField33.TabIndex = 25
+        Me.txtField33.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Location = New System.Drawing.Point(68, 52)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(156, 25)
+        Me.Label27.TabIndex = 24
+        Me.Label27.Text = "Date Effectivity"
+        '
+        'txtField87
+        '
+        Me.txtField87.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtField87.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtField87.Location = New System.Drawing.Point(234, 25)
+        Me.txtField87.Name = "txtField87"
+        Me.txtField87.Size = New System.Drawing.Size(106, 20)
+        Me.txtField87.TabIndex = 23
+        Me.txtField87.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(146, 27)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(76, 13)
+        Me.Label25.TabIndex = 22
+        Me.Label25.Text = "New Sell Price"
+        '
+        'txtField86
+        '
+        Me.txtField86.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtField86.Location = New System.Drawing.Point(234, 4)
+        Me.txtField86.Name = "txtField86"
+        Me.txtField86.Size = New System.Drawing.Size(106, 20)
+        Me.txtField86.TabIndex = 21
+        Me.txtField86.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(146, 4)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(78, 13)
+        Me.Label26.TabIndex = 20
+        Me.Label26.Text = "New Unit Price"
         '
         'frmInventory1
         '
@@ -870,7 +963,7 @@ Partial Class frmInventory1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(742, 495)
         Me.ControlBox = False
-        Me.Controls.Add(Me.Panel6)
+        Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel2)
@@ -889,9 +982,11 @@ Partial Class frmInventory1
         Me.Panel2.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
-        Me.Panel5.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         CType(Me.filePic, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -967,4 +1062,12 @@ Partial Class frmInventory1
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents filePic As System.Windows.Forms.PictureBox
     Friend WithEvents fileList As System.Windows.Forms.ListBox
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents txtField33 As TextBox
+    Friend WithEvents Label27 As Label
+    Friend WithEvents txtField87 As TextBox
+    Friend WithEvents Label25 As Label
+    Friend WithEvents txtField86 As TextBox
+    Friend WithEvents Label26 As Label
+    Friend WithEvents CheckBox4 As CheckBox
 End Class

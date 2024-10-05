@@ -70,6 +70,7 @@ Partial Class mdiMain
         Me.UtilitiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackupDatabaseToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RestoreDatabseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductUploadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tslDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tslUser = New System.Windows.Forms.ToolStripStatusLabel()
@@ -238,19 +239,19 @@ Partial Class mdiMain
         '
         Me.BillingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BillingOfStatementToolStripMenuItem, Me.StateOfAccountToolStripMenuItem})
         Me.BillingToolStripMenuItem.Name = "BillingToolStripMenuItem"
-        Me.BillingToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BillingToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.BillingToolStripMenuItem.Text = "Billing"
         '
         'BillingOfStatementToolStripMenuItem
         '
         Me.BillingOfStatementToolStripMenuItem.Name = "BillingOfStatementToolStripMenuItem"
-        Me.BillingOfStatementToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BillingOfStatementToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.BillingOfStatementToolStripMenuItem.Text = "Billing of Statement"
         '
         'StateOfAccountToolStripMenuItem
         '
         Me.StateOfAccountToolStripMenuItem.Name = "StateOfAccountToolStripMenuItem"
-        Me.StateOfAccountToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.StateOfAccountToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.StateOfAccountToolStripMenuItem.Text = "State of Account"
         '
         'AdminitratorToolStripMenuItem
@@ -264,7 +265,7 @@ Partial Class mdiMain
         '
         Me.BackendToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AccumulatedGrandTotalToolStripMenuItem, Me.EventLogsToolStripMenuItem, Me.BIRSalesSummaryToolStripMenuItem, Me.CancelledReceiptToolStripMenuItem, Me.ItemListToolStripMenuItem, Me.SalesReportToolStripMenuItem, Me.VoidItemsToolStripMenuItem, Me.ComplementaryToolStripMenuItem, Me.ChargeToolStripMenuItem, Me.EJournalToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.SalesInventorySummaryToolStripMenuItem})
         Me.BackendToolStripMenuItem.Name = "BackendToolStripMenuItem"
-        Me.BackendToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.BackendToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.BackendToolStripMenuItem.Text = "Standard"
         Me.BackendToolStripMenuItem.Visible = False
         '
@@ -343,25 +344,25 @@ Partial Class mdiMain
         'StandardToolStripMenuItem
         '
         Me.StandardToolStripMenuItem.Name = "StandardToolStripMenuItem"
-        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.StandardToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.StandardToolStripMenuItem.Text = "Standard"
         '
         'YReadingToolStripMenuItem
         '
         Me.YReadingToolStripMenuItem.Name = "YReadingToolStripMenuItem"
-        Me.YReadingToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.YReadingToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.YReadingToolStripMenuItem.Text = "Y-Reading"
         Me.YReadingToolStripMenuItem.Visible = False
         '
         'TerminalZReadingToolStripMenuItem
         '
         Me.TerminalZReadingToolStripMenuItem.Name = "TerminalZReadingToolStripMenuItem"
-        Me.TerminalZReadingToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.TerminalZReadingToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TerminalZReadingToolStripMenuItem.Text = "Z-Reading"
         '
         'UtilitiesToolStripMenuItem
         '
-        Me.UtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BackupDatabaseToolStripMenuItem1, Me.RestoreDatabseToolStripMenuItem})
+        Me.UtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BackupDatabaseToolStripMenuItem1, Me.RestoreDatabseToolStripMenuItem, Me.ProductUploadToolStripMenuItem})
         Me.UtilitiesToolStripMenuItem.Name = "UtilitiesToolStripMenuItem"
         Me.UtilitiesToolStripMenuItem.Size = New System.Drawing.Size(58, 20)
         Me.UtilitiesToolStripMenuItem.Text = "Utilities"
@@ -369,14 +370,20 @@ Partial Class mdiMain
         'BackupDatabaseToolStripMenuItem1
         '
         Me.BackupDatabaseToolStripMenuItem1.Name = "BackupDatabaseToolStripMenuItem1"
-        Me.BackupDatabaseToolStripMenuItem1.Size = New System.Drawing.Size(164, 22)
+        Me.BackupDatabaseToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.BackupDatabaseToolStripMenuItem1.Text = "Backup Database"
         '
         'RestoreDatabseToolStripMenuItem
         '
         Me.RestoreDatabseToolStripMenuItem.Name = "RestoreDatabseToolStripMenuItem"
-        Me.RestoreDatabseToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.RestoreDatabseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.RestoreDatabseToolStripMenuItem.Text = "Restore Databse"
+        '
+        'ProductUploadToolStripMenuItem
+        '
+        Me.ProductUploadToolStripMenuItem.Name = "ProductUploadToolStripMenuItem"
+        Me.ProductUploadToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProductUploadToolStripMenuItem.Text = "Product Upload"
         '
         'StatusStrip1
         '
@@ -482,4 +489,5 @@ Partial Class mdiMain
     Friend WithEvents BillingOfStatementToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StateOfAccountToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DeliveryServiceToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductUploadToolStripMenuItem As ToolStripMenuItem
 End Class
